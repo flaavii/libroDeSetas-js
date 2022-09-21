@@ -1,41 +1,62 @@
 //crear usuario
 class Usuario {
-    constructor(nombre, mail, location) {
-        this.nombre = nombre;
-        this.mail = mail;
-        this.location = location;
-    }
+  constructor(nombre, mail, location) {
+    this.nombre = nombre;
+    this.mail = mail;
+    this.location = location;
+  }
 }
 
 let boton = document.getElementById("enviarInfo");
 boton.addEventListener("click", cargarUsuario);
 
 //capturar elementos
-function cargarUsuario(){
-    let nombre = document.getElementById("name").value;
-    let mail = document.getElementById("mail").value;
-    let location= document.getElementById("location").value;
-    let usuario1 = new Usuario(nombre, mail, location);
-    console.log(usuario1);
-    mostrarUsuario(usuario1);
+let arrayCliente = [];
+let cart = [];
 
+function cargarUsuario() {
+  let nombre = document.getElementById("name").value;
+  let mail = document.getElementById("mail").value;
+  let location = document.getElementById("location").value;
+  let usuario1 = new Usuario(nombre, mail, location);
+  arrayCliente.push(usuario1);
+  console.log(usuario1);
+  mostrarUsuario(usuario1);
+
+  console.log(arrayCliente);
+  /* Template y uso los metodos DOM para enviar la información*/
+  arrayCliente.forEach((usuario) => {
+    const div = document.createElement("div");
+    let contenido = document.getElementById("contenidoCliente");
+contenido.innerHTML=""
+    div.innerHTML = `<div><h2>Usuario</h2></div>
+  <div>
+  <ul>
+  <li><strong>Nombre:</strong> ${usuario.nombre}</li>
+  <li><strong>Email:</strong> ${usuario.mail}</li>
+  <li><strong>Pais:</strong> ${usuario.location}</li>
+  </ul>
+  </div>
+  
+  `;
+    contenido.appendChild(div);
+  });
 }
 
 //eliminar elementos
-function mostrarUsuario(usuario){
-    let formulario = document.getElementById("customer");
-    formulario.innerHTML = "";
+function mostrarUsuario(usuario) {
+  let formulario = document.getElementById("customer");
+  formulario.innerHTML = "";
 
-//agregar mensaje
-let nuevoContenido = document.createElement("div");
-nuevoContenido.innerHTML = `<h3> Bienvenidx ${usuario.nombre}!</h3><h4>es momento de elegir la Seta</h4>`;
+  //agregar mensaje
+  let nuevoContenido = document.createElement("div");
+  nuevoContenido.innerHTML = `<h3> Bienvenidx ${usuario.nombre}!</h3><h4>es momento de elegir la Seta</h4>`;
 
-nuevoContenido.className = "info-usuario";
-formulario.appendChild(nuevoContenido);
+  nuevoContenido.className = "info-usuario";
+  formulario.appendChild(nuevoContenido);
 }
 
-
-//creacion de setas 
+//creacion de setas
 
 let setas = [
   {
@@ -67,7 +88,7 @@ const dibujarSetas = () => {
         <div class="card-body">
           <h5 class="card-title text-center">${seta.variedad}</h5>
           <p id="p" class="card-text text-center">El tiempo estimado para tu cultivo es de ${seta.tiempoCultivo} días.</p>
-          <a href="#" class="btn btn-outline-dark d-grid comenzarLibro" id='setas-${seta.id}'>Comenzar Libro</a>
+          <a href="#" class="btn btn-outline-dark d-grid comenzarLibro" id='setas-${seta.id}' data-bs-toggle="modal" data-bs-target="#exampleModal">Comenzar Libro</a>
           </div>`;
     contenedor.appendChild(card);
   });
@@ -75,83 +96,41 @@ const dibujarSetas = () => {
 
 dibujarSetas();
 
-
-/*Llamo al todos los botones con clase comenzarLibro 
+//Llamo al todos los botones con clase comenzarLibro
 const btncomenzarLibro = document.getElementsByClassName("comenzarLibro");
 
-
-/* Ciclo para agregar la funcion agregarLibro, a todo los botones btncomenzarLibro 
+//Ciclo para agregar la funcion agregarLibro, a todo los botones btncomenzarLibro
 for (const btn of btncomenzarLibro) {
   btn.onclick = agregarLibro;
 }
 
-agregarLibro();
 
-// Funcion para seleccionar Setas 
+// Funcion para seleccionar Setas
 function agregarLibro(e) {
-    const btn = e.target
-    const id = btn.id.split('-')[1]
+  const btn = e.target;
+  const id = btn.id.split("-")[1];
 
-    
-    const seta = setas.find(p => p.id == id)
-    console.log('Creando libro', seta)
+  const seta = setas.find((p) => p.id == id);
+
+  /* creo Array para enviar la informacion con la cual voy a mostrar */
+  cart.push(seta);
+  console.log(cart);
+  /* creo template sobre el modal */
+  cart.forEach((seta) => {
+    /* selecciono el DIV del modal donde se ubicará la info */
+    const div = document.createElement("div");
+    let contenido = document.getElementById("contenidoSetas");
+    /* Creo unas Card copiadas de Bootstrap */
+    contenido.innerHTML = "";
+    div.innerHTML = `<div class="card" style="width: 18rem;">
+    <img src="${seta.imagen}" class="card-img-top" alt="${seta.variedad}">
+    <div class="card-body">
+      <h5 class="card-title text-center">${seta.variedad}</h5>
+      <p class="card-text text-center">El tiempo estimado para tu cultivo es de ${seta.tiempoCultivo} días.</p>
+    </div>
+  </div>
+  
+  `;
+    contenido.appendChild(div);
+  });
 }
-
-*/
-
-//Creacion de libro
-let cart = [];
-let modalLibro = document.getElementById("cart");
-
-//Si la seleccion es mayor a 0 crear el libro
-let total = 0;
-const dibujarLibro = () => {
-  modalLibro.className = "cart";
-  modalLibro.innerHTML = "";
-  if (cart.length > 0) {
-    cart.forEach((seta, indice) => {
-      total = total + seta.tiempoCultivo + seta.tiempoCultivo;
-      const libroConteiner = document.createElement("div");
-      libroConteiner.className = "seta-libro";
-      libroConteiner.innerHTML = `
-            <img class="card.img" src= "${seta.imagen}"/>
-            <div class="product-details">${seta.variedad}</div>
-            <div class="product-details">Seta:${seta.variedad}</div>
-            <div class="product-details">Dias de cultivo:${seta.tiempoCultivo}</div>
-            <div class="product-details">Estimado:${seta.tiempoCultivo}</div>
-            <button class="btn btn-info" id="removeProduct" onClick="remove-product(${indice})>Eliminar Selección</button> `;
-
-      modalLibro.appendChild(libroConteiner);   
-      libroConteiner();  
-    });
-
-  // Una vez creado el libro expresar el total y crear boton de finalizar o remover
-    const totalConteiner = document.createElement("div");
-    totalConteiner.className = "total-libro";
-    totalConteiner.innerHTML = `<div class="total"> TIEMPO: ${total}</div>
-        <button class= "btn btn-info finalizar" id="finalizar" onClick="finalizarLibro">`;
-    modalLibro.appendChild(totalConteiner);
-  } else {
-    modalLibro.classList.remove("cart");
-  }
-
-  totalConteiner();
-};
-
-const removeProduct = (indice) => {
-  cart.splice(indice, 1);
-  dibujarLibro();
-};
-
-const finalizarLibro = () => {
-  const total = document.getElementsByClassName("total")[0].innerHTML;
-  modalLibro.innerHTML = "";
-  const libroFinalizado = `<div class="libro-finalizado"><p class= "libro-parrafo">SE CREÓ TU LIBRO</p></div>`;
-  modalLibro.innerHTML = libroFinalizado;
-
-  libroFinalizado();
-};
-
-
-
-
