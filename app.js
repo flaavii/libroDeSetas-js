@@ -1,3 +1,23 @@
+// pregunta por prompt la edad, la guarda en el localStorage
+function conocerEdad() {
+  let edad = localStorage.getItem("edad");
+  if (edad == null) {
+    edad = prompt("Ingrese su edad");
+  }
+  localStorage.setItem("edad", edad);
+  if (edad < 18) {
+    alert("Eres menor de edad, cuentale a un adulto sobre Libro de Setas");
+    return false;
+  } else {
+    alert(
+      "Vamos a crear tu Libro de Cultivo"
+    );
+    return true;
+  }
+}
+
+conocerEdad();
+
 //crear usuario
 class Usuario {
   constructor(nombre, mail, location) {
@@ -23,7 +43,9 @@ function cargarUsuario() {
   console.log(usuario1);
   mostrarUsuario(usuario1);
 
-  console.log(arrayCliente);
+//guarda los datos del usuario en el localStorage
+  localStorage.setItem("usuario", JSON.stringify( arrayCliente ));
+  
   /* Template y uso los metodos DOM para enviar la información*/
   arrayCliente.forEach((usuario) => {
     const div = document.createElement("div");
@@ -41,6 +63,7 @@ contenido.innerHTML=""
   `;
     contenido.appendChild(div);
   });
+  
 }
 
 //eliminar elementos
@@ -83,7 +106,7 @@ const dibujarSetas = () => {
   let contenedor = document.getElementById("container");
   setas.forEach((seta) => {
     let card = document.createElement("div");
-    card.classList.add("card", "col-sm-12", "col-lg-3");
+    card.classList.add("card", "col-sm-3", "col-lg-3");
     card.innerHTML = `<img src="${seta.imagen}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title text-center">${seta.variedad}</h5>
@@ -92,6 +115,7 @@ const dibujarSetas = () => {
           </div>`;
     contenedor.appendChild(card);
   });
+  
 };
 
 dibujarSetas();
