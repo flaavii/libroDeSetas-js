@@ -1,22 +1,16 @@
-// pregunta por prompt la edad, la guarda en el localStorage
+// pregunta por prompt la edad, la guarda en el localStorage 
+// OPERADOR TERNARIO 
 function conocerEdad() {
   let edad = localStorage.getItem("edad");
   if (edad == null) {
     edad = prompt("Ingrese su edad");
   }
   localStorage.setItem("edad", edad);
-  if (edad < 18) {
-    alert("Eres menor de edad, cuentale a un adulto sobre Libro de Setas");
-    return false;
-  } else {
-    alert(
-      "Vamos a crear tu Libro de Cultivo"
-    );
-    return true;
-  }
+  edad < 18 ? alert("Eres menor de edad, cuentale a un adulto sobre Libro de Setas"): alert("Vamos a crear tu Libro de Cultivo" );
 }
 
 conocerEdad();
+
 
 //crear usuario
 class Usuario {
@@ -110,7 +104,7 @@ const dibujarSetas = () => {
     card.innerHTML = `<img src="${seta.imagen}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title text-center">${seta.variedad}</h5>
-          <p id="p" class="card-text text-center">El tiempo estimado para tu cultivo es de ${seta.tiempoCultivo} días.</p>
+          <p id="p" class="card-text text-center">El tiempo estimado para cosechar es de ${seta.tiempoCultivo} días.</p>
           <a href="#" class="btn btn-outline-dark d-grid comenzarLibro" id='setas-${seta.id}' data-bs-toggle="modal" data-bs-target="#exampleModal">Comenzar Libro</a>
           </div>`;
     contenedor.appendChild(card);
@@ -133,7 +127,6 @@ for (const btn of btncomenzarLibro) {
 function agregarLibro(e) {
   const btn = e.target;
   const id = btn.id.split("-")[1];
-
   const seta = setas.find((p) => p.id == id);
 
   /* creo Array para enviar la informacion con la cual voy a mostrar */
@@ -150,7 +143,7 @@ function agregarLibro(e) {
     <img src="${seta.imagen}" class="card-img-top" alt="${seta.variedad}">
     <div class="card-body">
       <h5 class="card-title text-center">${seta.variedad}</h5>
-      <p class="card-text text-center">El tiempo estimado para tu cultivo es de ${seta.tiempoCultivo} días.</p>
+      <p class="card-text text-center px-2">El tiempo estimado para cosechar es de ${seta.tiempoCultivo} días.</p>
     </div>
   </div>
   
@@ -158,3 +151,6 @@ function agregarLibro(e) {
     contenido.appendChild(div);
   });
 }
+
+// OPERADOR LOGICO AND
+cart.length === 0 && console.log("El libro está vacio");
