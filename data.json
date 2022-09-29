@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "variedad": "B+",
+      "tiempoCultivo": 6,
+      "imagen": "./img/b+.webp"
+    },
+    {
+      "id": 2,
+      "variedad": "Golden Teacher",
+      "tiempoCultivo": 10,
+      "imagen": "./img/goldenTeacher.webp"
+    },
+    {
+      "id": 3,
+      "variedad": "Malbar Coast",
+      "tiempoCultivo": 15,
+      "imagen": "./img/malbarCoast.webp"
+    }
+  ]
+ 

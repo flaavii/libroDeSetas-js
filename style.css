@@ -39,6 +39,11 @@ section p {
 .card {
     margin: 5%;
 }
+@media (min-width: 385px){
+    .card {
+        margin: 0;
+    }
+}
 
 #h2{
     color:white;
