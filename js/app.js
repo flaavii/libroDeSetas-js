@@ -1,16 +1,18 @@
-// pregunta por prompt la edad, la guarda en el localStorage 
-// OPERADOR TERNARIO 
+/*
+// pregunta por prompt la edad, la guarda en el localStorage  
 function conocerEdad() {
   let edad = localStorage.getItem("edad");
   if (edad == null) {
     edad = prompt("Ingrese su edad");
   }
   localStorage.setItem("edad", edad);
+  // OPERADOR TERNARIO
   edad < 18 ? alert("Eres menor de edad, cuentale a un adulto sobre Libro de Setas"): alert("Vamos a crear tu Libro de Cultivo" );
+
 }
 
 conocerEdad();
-
+*/
 
 //crear usuario
 class Usuario {
@@ -23,6 +25,8 @@ class Usuario {
 
 let boton = document.getElementById("enviarInfo");
 boton.addEventListener("click", cargarUsuario);
+
+
 
 //capturar elementos
 let arrayCliente = [];
@@ -55,10 +59,28 @@ contenido.innerHTML=""
   </div>
   
   `;
-    contenido.appendChild(div);
-  });
   
+    contenido.appendChild(div);
+    
+  });
+
+  Toastify({
+    text: "Tus datos fueron cargados, encuentralos en el menú de opciones",
+    duration: 2500,
+    close: true,
+    gravity: "bottom", 
+    position: "right",  
+    style: {
+    background: "#312954",
+    },
+    offset: {
+      x: 2.5,
+      y: 2.5
+    },
+  }).showToast();
 }
+  
+
 
 //eliminar elementos
 function mostrarUsuario(usuario) {
@@ -118,16 +140,25 @@ dibujarSetas();
 const btncomenzarLibro = document.getElementsByClassName("comenzarLibro");
 
 //Ciclo para agregar la funcion agregarLibro, a todo los botones btncomenzarLibro
+
+// NO FUNCIONA import Swal from 'sweetalert2';
 for (const btn of btncomenzarLibro) {
   btn.onclick = agregarLibro;
+/*NO FUNCIONA
+  Swal.fire(
+    'Good job!',
+    'You clicked the button!',
+    'success'
+  )
+  */
 }
-
 
 // Funcion para seleccionar Setas
 function agregarLibro(e) {
   const btn = e.target;
   const id = btn.id.split("-")[1];
   const seta = setas.find((p) => p.id == id);
+  
 
   /* creo Array para enviar la informacion con la cual voy a mostrar */
   cart.push(seta);
@@ -148,6 +179,7 @@ function agregarLibro(e) {
   </div>
   
   `;
+  
     contenido.appendChild(div);
   });
 }
