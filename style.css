@@ -15,7 +15,7 @@ header div h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     margin-top: 20%;
 }
-@media (min-width: 385px) {
+@media (min-width: 375px) {
     header div h1{
         font-size: 6.5em;
         margin-top: 10%;
@@ -29,7 +29,7 @@ section p {
     font-size: 1em;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-@media (min-width: 385px){
+@media (min-width: 375px){
     section p {
         margin: 2%;
         font-size: 1.2em;
@@ -39,7 +39,7 @@ section p {
 .card {
     margin: 5%;
 }
-@media (min-width: 385px){
+@media (min-width: 375px){
     .card {
         margin: 0;
     }
@@ -51,7 +51,7 @@ section p {
     font-size: 1.3em;
     letter-spacing: 0.25em;
 }
-@media (min-width: 385px) {
+@media (min-width: 375px) {
     #h2{
         font-size: 2.5em;
     }
@@ -78,7 +78,7 @@ section p {
 div #container{
     margin: 0 10%;
 }
-@media (min-width: 385px) {
+@media (min-width: 375px) {
     div #container{
         margin: 0;
     }
