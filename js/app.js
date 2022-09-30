@@ -116,13 +116,19 @@ let setas = [
     tiempoCultivo: 15,
     imagen: "./img/malbarCoast.webp",
   },
+  {
+    id: 4,
+    variedad: "Thai Koh Samui",
+    tiempoCultivo: 12,
+    imagen: "./img/thaiKohSamui.jpeg",
+  },
 ];
 
 const dibujarSetas = () => {
   let contenedor = document.getElementById("container");
   setas.forEach((seta) => {
     let card = document.createElement("div");
-    card.classList.add("card", "col-sm-3", "col-lg-3");
+    card.classList.add("card", "col-sm-3", "col-lg-2");
     card.innerHTML = `<img src="${seta.imagen}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title text-center">${seta.variedad}</h5>
