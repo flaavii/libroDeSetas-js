@@ -49,7 +49,7 @@ function cargarUsuario() {
     const div = document.createElement("div");
     let contenido = document.getElementById("contenidoCliente");
 contenido.innerHTML=""
-    div.innerHTML = `<div><h2>Usuario</h2></div>
+    div.innerHTML = `<div d-flex><h2>Usuario</h2></div>
   <div>
   <ul class="list-group list-group-flush">
   <li class="list-group-item"><strong>Nombre:</strong> ${usuario.nombre}</li>
@@ -65,8 +65,8 @@ contenido.innerHTML=""
   });
 
   Toastify({
-    text: "Tus datos fueron cargados, encuentralos en el menú de opciones",
-    duration: 2500,
+    text: "Cargamos tus datos, encuentralos en el menú de opciones",
+    duration: 3000,
     close: true,
     gravity: "bottom", 
     position: "right",  
@@ -82,14 +82,14 @@ contenido.innerHTML=""
   
 
 
-//eliminar elementos
+//crear usuario
 function mostrarUsuario(usuario) {
   let formulario = document.getElementById("customer");
   formulario.innerHTML = "";
 
   //agregar mensaje
   let nuevoContenido = document.createElement("div");
-  nuevoContenido.innerHTML = `<h3> Bienvenidx ${usuario.nombre}!</h3><h4>es momento de elegir la Seta</h4>`;
+  nuevoContenido.innerHTML = `<h3> Bienvenidx ${usuario.nombre}!</h3><h4>Elegí una variedad para crear Tu Libro de Setas</h4>`;
 
   nuevoContenido.className = "info-usuario";
   formulario.appendChild(nuevoContenido);
