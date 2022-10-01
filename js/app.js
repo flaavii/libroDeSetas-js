@@ -51,10 +51,10 @@ function cargarUsuario() {
 contenido.innerHTML=""
     div.innerHTML = `<div><h2>Usuario</h2></div>
   <div>
-  <ul>
-  <li><strong>Nombre:</strong> ${usuario.nombre}</li>
-  <li><strong>Email:</strong> ${usuario.mail}</li>
-  <li><strong>Pais:</strong> ${usuario.location}</li>
+  <ul class="list-group list-group-flush">
+  <li class="list-group-item"><strong>Nombre:</strong> ${usuario.nombre}</li>
+  <li class="list-group-item"><strong>Email:</strong> ${usuario.mail}</li>
+  <li class="list-group-item"><strong>Pais:</strong> ${usuario.location}</li>
   </ul>
   </div>
   
@@ -180,7 +180,7 @@ function agregarLibro(e) {
     <img src="${seta.imagen}" class="card-img-top" alt="${seta.variedad}">
     <div class="card-body">
       <h5 class="card-title text-center">${seta.variedad}</h5>
-      <p class="card-text text-center px-2">El tiempo estimado para cosechar es de ${seta.tiempoCultivo} días.</p>
+      <p class="card-text text-center">El tiempo estimado para cosechar es de ${seta.tiempoCultivo} días.</p>
     </div>
   </div>
   
