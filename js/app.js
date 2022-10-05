@@ -95,7 +95,7 @@ function mostrarUsuario(usuario) {
   formulario.appendChild(nuevoContenido);
 }
 
-//creacion de setas
+/*creacion de setas
 
 let setas = [
   {
@@ -141,6 +141,29 @@ const dibujarSetas = () => {
 };
 
 dibujarSetas();
+*/
+
+// CREO LAS SETAS USANDO FETCH - NO FUNCIONA
+const dibujarSetas = document.querySelector("#container")
+
+fetch ("/data.json")
+.then((res)=>res.json())
+.then((data)=>{
+  data.forEach((seta) => {
+    
+    let card = document.createElement("div");
+    card.classList.add("card", "col-sm-3", "col-lg-2");
+    card.innerHTML = `<img src="${seta.imagen}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title text-center">${seta.variedad}</h5>
+          <p id="p" class="card-text text-center">El tiempo estimado para cosechar es de ${seta.tiempoCultivo} días.</p>
+          <a href="#" class="btn btn-outline-dark d-grid comenzarLibro" id='setas-${seta.id}' data-bs-toggle="modal" data-bs-target="#exampleModal">Comenzar Libro</a>
+          </div>`;
+    contenedor.appendChild(card);
+  });
+
+  })
+
 
 //Llamo al todos los botones con clase comenzarLibro
 const btncomenzarLibro = document.getElementsByClassName("comenzarLibro");
@@ -149,14 +172,7 @@ const btncomenzarLibro = document.getElementsByClassName("comenzarLibro");
 
 // NO FUNCIONA import Swal from 'sweetalert2';
 for (const btn of btncomenzarLibro) {
-  btn.onclick = agregarLibro;
-/*NO FUNCIONA
-  Swal.fire(
-    'Good job!',
-    'You clicked the button!',
-    'success'
-  )
-  */
+  btn.onclick = agregarLibro; 
 }
 
 // Funcion para seleccionar Setas

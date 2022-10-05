@@ -1,3 +1,5 @@
+
+
 [
     {
       "id": 1,
@@ -16,6 +18,11 @@
       "variedad": "Malbar Coast",
       "tiempoCultivo": 15,
       "imagen": "./img/malbarCoast.webp"
+    },
+    {
+      "id": 4,
+      "variedad": "Thai Koh Samui",
+      "tiempoCultivo": 12,
+      "imagen": "./img/thaiKohSamui.jpeg"
     }
   ]
- 
