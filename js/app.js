@@ -26,8 +26,6 @@ class Usuario {
 let boton = document.getElementById("enviarInfo");
 boton.addEventListener("click", cargarUsuario);
 
-
-
 //capturar elementos
 let arrayCliente = [];
 let cart = [];
@@ -44,7 +42,7 @@ function cargarUsuario() {
 //guarda los datos del usuario en el localStorage
   localStorage.setItem("usuario", JSON.stringify( arrayCliente ));
   
-  /* Template y uso los metodos DOM para enviar la información*/
+//template y envio de informacion 
   arrayCliente.forEach((usuario) => {
     const div = document.createElement("div");
     let contenido = document.getElementById("contenidoCliente");
@@ -57,11 +55,10 @@ contenido.innerHTML=""
   <li class="list-group-item"><strong>Pais:</strong> ${usuario.location}</li>
   </ul>
   </div>
-  
   `;
   
-    contenido.appendChild(div);
-    
+  contenido.appendChild(div);
+ 
   });
 
   Toastify({
@@ -81,7 +78,6 @@ contenido.innerHTML=""
 }
   
 
-
 //crear usuario
 function mostrarUsuario(usuario) {
   let formulario = document.getElementById("customer");
@@ -95,61 +91,12 @@ function mostrarUsuario(usuario) {
   formulario.appendChild(nuevoContenido);
 }
 
-/*creacion de setas
-
-let setas = [
-  {
-    id: 1,
-    variedad: "B+",
-    tiempoCultivo: 6,
-    imagen: "./img/b+.webp",
-  },
-  {
-    id: 2,
-    variedad: "Golden Teacher",
-    tiempoCultivo: 10,
-    imagen: "./img/goldenTeacher.webp",
-  },
-  {
-    id: 3,
-    variedad: "Malbar Coast",
-    tiempoCultivo: 15,
-    imagen: "./img/malbarCoast.webp",
-  },
-  {
-    id: 4,
-    variedad: "Thai Koh Samui",
-    tiempoCultivo: 12,
-    imagen: "./img/thaiKohSamui.jpeg",
-  },
-];
-
-const dibujarSetas = () => {
-  let contenedor = document.getElementById("container");
-  setas.forEach((seta) => {
-    let card = document.createElement("div");
-    card.classList.add("card", "col-sm-3", "col-lg-2");
-    card.innerHTML = `<img src="${seta.imagen}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">${seta.variedad}</h5>
-          <p id="p" class="card-text text-center">El tiempo estimado para cosechar es de ${seta.tiempoCultivo} días.</p>
-          <a href="#" class="btn btn-outline-dark d-grid comenzarLibro" id='setas-${seta.id}' data-bs-toggle="modal" data-bs-target="#exampleModal">Comenzar Libro</a>
-          </div>`;
-    contenedor.appendChild(card);
-  });
-  
-};
-
-dibujarSetas();
-*/
-
-// CREO LAS SETAS USANDO FETCH - NO FUNCIONA CORS
+//crear card setas 
 const dibujarSetas = document.querySelector("#container");
 
-fetch("/data.json")
+fetch("./data.json")
   .then((res) => res.json())
   .then((data) => {
-    console.log(data);
     data.forEach((seta) => {
       let contenedor = document.getElementById("container");
       let card = document.createElement("div");
@@ -167,21 +114,21 @@ fetch("/data.json")
       btn.onclick = agregarLibro;
     }
 
-    // Funcion para seleccionar Setas
+    //funcion para seleccionar Setas
     function agregarLibro(e) {
       const btn = e.target;
       const id = btn.id.split("-")[1];
       const seta = data.find((p) => p.id == id);
     
-      /* creo Array para enviar la informacion con la cual voy a mostrar */
+      //envia informacion a cart
       cart.push(seta);
       console.log(cart);
-      /* creo template sobre el modal */
+      //creo modal
       cart.forEach((seta) => {
-        /* selecciono el DIV del modal donde se ubicará la info */
+      
         const div = document.createElement("div");
         let contenido = document.getElementById("contenidoSetas");
-        /* Creo unas Card copiadas de Bootstrap */
+        
         contenido.innerHTML = "";
         div.innerHTML = `<div class="card" style="width: 18rem;">
         <img src="${seta.imagen}" class="card-img-top" alt="${seta.variedad}">
@@ -192,7 +139,6 @@ fetch("/data.json")
       </div>
       
       `;
-    
         contenido.appendChild(div);
       });
     }});
@@ -201,27 +147,26 @@ fetch("/data.json")
 const btncomenzarLibro = document.getElementsByClassName("comenzarLibro");
 
 //Ciclo para agregar la funcion agregarLibro, a todo los botones btncomenzarLibro
-
-// NO FUNCIONA import Swal from 'sweetalert2';
 for (const btn of btncomenzarLibro) {
   btn.onclick = agregarLibro;
-}
+} 
 
-// Funcion para seleccionar Setas
+//Funcion para seleccionar Setas
 function agregarLibro(e) {
   const btn = e.target;
   const id = btn.id.split("-")[1];
   const seta = setas.find((p) => p.id == id);
 
-  /* creo Array para enviar la informacion con la cual voy a mostrar */
+  //envio informacion 
   cart.push(seta);
-  console.log(cart);
-  /* creo template sobre el modal */
+  
+
+  //creacion de modal
   cart.forEach((seta) => {
-    /* selecciono el DIV del modal donde se ubicará la info */
+    
     const div = document.createElement("div");
     let contenido = document.getElementById("contenidoSetas");
-    /* Creo unas Card copiadas de Bootstrap */
+    
     contenido.innerHTML = "";
     div.innerHTML = `<div class="card" style="width: 18rem;">
     <img src="${seta.imagen}" class="card-img-top" alt="${seta.variedad}">
@@ -236,6 +181,40 @@ function agregarLibro(e) {
     contenido.appendChild(div);
   });
 }
+
+//llamo al boton btnEntrada y con el creo un div en modal
+btnEntrada.addEventListener('click', e => {
+  agregarEntrada(e)
+})
+
+function agregarEntrada(e) {
+
+let entrada = document.getElementById("nuevaEntrada");
+const div = document.createElement("div");
+
+entrada.innerHTML =`<div>
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Fecha:</span>
+    <input type="text" class="form-control" placeholder="Fecha" aria-label="Fecha" aria-describedby="basic-addon1">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Acción:</span>
+    <input type="text" class="form-control" placeholder="Acción del día" aria-label="Acción" aria-describedby="basic-addon1">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Observaciones:</span>
+    <input type="text" class="form-control" placeholder="Observaciones" aria-label="Observaciones" aria-describedby="basic-addon1">
+  </div>
+</div>
+  `;
+
+  
+  entrada.appendChild(div);
+
+}
+
+
+
 
 // OPERADOR LOGICO AND
 cart.length === 0 && console.log("El libro está vacio");
