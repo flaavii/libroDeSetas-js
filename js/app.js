@@ -193,25 +193,98 @@ let entrada = document.getElementById("nuevaEntrada");
 const div = document.createElement("div");
 
 entrada.innerHTML =`<div>
-<div class="input-group mb-3">
+<div id="fecha" class="input-group mb-3">
     <span class="input-group-text" id="basic-addon1">Fecha:</span>
     <input type="text" class="form-control" placeholder="Fecha" aria-label="Fecha" aria-describedby="basic-addon1">
   </div>
-  <div class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon1">Acción:</span>
-    <input type="text" class="form-control" placeholder="Acción del día" aria-label="Acción" aria-describedby="basic-addon1">
-  </div>
-  <div class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon1">Observaciones:</span>
-    <input type="text" class="form-control" placeholder="Observaciones" aria-label="Observaciones" aria-describedby="basic-addon1">
-  </div>
+  <div id="accion" class="form-floating">
+  <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+    <option selected class= "bold">Seleccioná una acción</option>
+    <option value="1">Esterilización</option>
+    <option value="2">Hidratación de esporas</option>
+    <option value="3">Inoculación</option>
+    <option value="4">Armado de bulk</option>
+    <option value="5">Cosecha</option>
+    <option value="6">Secado y guardado</option>
+    <option value="7">Otra</option>
+  </select>
+  <label for="floatingSelect">Acciones:</label>
+</div>
+<div id="observacion" class="form-floating">
+<textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+<label for="floatingTextarea2">Observaciones</label>
+</div>
 </div>
   `;
 
   
   entrada.appendChild(div);
 
+
 }
+
+//crear entrada
+class Entrada {
+  constructor(fecha, accion, observacion) {
+    this.fecha = fecha;
+    this.accion = accion;
+    this.observacion = observacion;
+  }
+}
+
+//capturar elementos
+let arrayEntrada = [];
+
+let boton1 = document.getElementById("enviarEntrada");
+boton1.addEventListener("click", cargarEntrada);
+
+function cargarEntrada() {
+  let fecha = document.getElementById("fecha").value;
+  let accion = document.getElementById("accion").value;
+  let observacion = document.getElementById("observacion").value;
+  let entrada1 = new Entrada(fecha, accion, observacion);
+  arrayEntrada.push(entrada1);
+  
+
+//guarda los datos de la entrada en el localStorage
+  localStorage.setItem("entrada", JSON.stringify( arrayEntrada ));
+  
+//template y envio de informacion 
+  arrayEntrada.forEach((entrada) => {
+    const div = document.createElement("div");
+    let contenido = document.getElementById("contenidoEntrada");
+contenido.innerHTML=""
+    div.innerHTML = `<div d-flex><h4>Entrada</h4></div>
+  <div>
+  <ul class="list-group list-group-flush">
+  <li class="list-group-item"><strong>Fecha:</strong> ${entrada.fecha}</li>
+  <li class="list-group-item"><strong>Acción:</strong> ${entrada.accion}</li>
+  <li class="list-group-item"><strong>Observaciones:</strong> ${entrada.observacion}</li>
+  </ul>
+  </div>
+  `;
+  
+  
+  contenido.appendChild(div);
+ 
+  });
+
+  Toastify({
+    text: "Cargamos tu entrada, encuentrala en el menú de opciones",
+    duration: 3000,
+    close: true,
+    gravity: "bottom", 
+    position: "right",  
+    style: {
+    background: "#312954",
+    },
+    offset: {
+      x: 2.5,
+      y: 2.5
+    },
+  }).showToast();
+}
+  
 
 
 

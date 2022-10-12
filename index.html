@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Libro de Setas</title>
+    <link class="rounded-circle" rel="shortcut icon" href="./img/blob-scene-haikei-favicon.svg">
     <!-- mi css -->
 	<link rel="stylesheet" href="./style.css">
 	<!-- CSS bootstrap -->
@@ -112,12 +113,18 @@
       </div>
       <div class="d-flex justify-content-center row px-5 mx-5">
       <!--btnEntrada-->
-        <button type="button" class="btn btn-outline-dark btnEntrada" id="btnEntrada" data-bs-dismiss="modal">AGREGAR ENTRADA</button>
+        <button type="button" class="btn btn-outline-dark btnEntrada" id="btnEntrada">AGREGAR ENTRADA</button>
       <div id="nuevaEntrada"></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
-      </div>
+      <div id="contenidoEntrada"></div>
+      <!--cargarEntrada-->
+      <div>
+      <button class="btnNuevaEntrada btn btn-dark mb-5 mt-2" type="button" id="enviarEntrada">Cargar entrada</button>
     </div>
+    <!--btn carrar-->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+    </div>
+  </div>
     </div>
   </div>
 </div>
