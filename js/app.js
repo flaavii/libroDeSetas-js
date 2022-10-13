@@ -254,7 +254,7 @@ function cargarEntrada() {
     const div = document.createElement("div");
     let contenido = document.getElementById("contenidoEntrada");
 contenido.innerHTML=""
-    div.innerHTML = `<div d-flex><h4>Entrada</h4></div>
+    div.innerHTML = `<div d-flex><h2>Entrada</h2></div>
   <div>
   <ul class="list-group list-group-flush">
   <li class="list-group-item"><strong>Fecha:</strong> ${entrada.fecha}</li>
@@ -262,6 +262,7 @@ contenido.innerHTML=""
   <li class="list-group-item"><strong>Observaciones:</strong> ${entrada.observacion}</li>
   </ul>
   </div>
+  
   `;
   
   
