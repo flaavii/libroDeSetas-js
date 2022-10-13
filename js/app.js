@@ -192,12 +192,11 @@ function agregarEntrada(e) {
 let entrada = document.getElementById("nuevaEntrada");
 const div = document.createElement("div");
 
-entrada.innerHTML =`<div>
-<div id="fecha" class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon1">Fecha:</span>
+entrada.innerHTML =`<div class="my-3">
+<div id="fecha" class="input-group my-2">
     <input type="text" class="form-control" placeholder="Fecha" aria-label="Fecha" aria-describedby="basic-addon1">
   </div>
-  <div id="accion" class="form-floating">
+  <div id="accion" class="form-floating mb-2">
   <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
     <option selected class= "bold">Seleccioná una acción</option>
     <option value="1">Esterilización</option>
@@ -210,7 +209,7 @@ entrada.innerHTML =`<div>
   </select>
   <label for="floatingSelect">Acciones:</label>
 </div>
-<div id="observacion" class="form-floating">
+<div id="observacion" class="form-floating mb-3">
 <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
 <label for="floatingTextarea2">Observaciones</label>
 </div>
@@ -254,7 +253,7 @@ function cargarEntrada() {
     const div = document.createElement("div");
     let contenido = document.getElementById("contenidoEntrada");
 contenido.innerHTML=""
-    div.innerHTML = `<div d-flex><h2>Entrada</h2></div>
+    div.innerHTML = `<div d-flex><h5 class="mt-3">Entrada</h5></div>
   <div>
   <ul class="list-group list-group-flush">
   <li class="list-group-item"><strong>Fecha:</strong> ${entrada.fecha}</li>
