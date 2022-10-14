@@ -30,6 +30,7 @@ boton.addEventListener("click", cargarUsuario);
 let arrayCliente = [];
 let cart = [];
 
+
 function cargarUsuario() {
   let nombre = document.getElementById("name").value;
   let mail = document.getElementById("mail").value;
@@ -130,10 +131,10 @@ fetch("./data.json")
         let contenido = document.getElementById("contenidoSetas");
         
         contenido.innerHTML = "";
-        div.innerHTML = `<div class="card" style="width: 18rem;">
-        <img src="${seta.imagen}" class="card-img-top" alt="${seta.variedad}">
+        div.innerHTML = `<div class="card" style="width: 17rem;">
+        <img src="${seta.imagen}" class="card-img" alt="${seta.variedad}">
         <div class="card-body">
-          <h5 class="card-title text-center">${seta.variedad}</h5>
+          <h5 class="card-title text-center">Cultivo de ${seta.variedad}</h5>
           <p class="card-text text-center">El tiempo estimado para cosechar es de ${seta.tiempoCultivo} días.</p>
         </div>
       </div>
@@ -192,27 +193,32 @@ function agregarEntrada(e) {
 let entrada = document.getElementById("nuevaEntrada");
 const div = document.createElement("div");
 
-entrada.innerHTML =`<div class="my-3">
-<div id="fecha" class="input-group my-2">
-    <input type="text" class="form-control" placeholder="Fecha" aria-label="Fecha" aria-describedby="basic-addon1">
+entrada.innerHTML =`<div class="my-4 mx-2">
+
+<div class="input-group my-2">
+
+  <input id="fecha" type="text" class="form-control" placeholder="Fecha" aria-label="Fecha" aria-describedby="basic-addon1">
   </div>
-  <div id="accion" class="form-floating mb-2">
-  <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+
+  <div class="form-floating mb-2">
+  <select id="accion" class="form-select" id="floatingSelect" aria-label="Floating label select example">
     <option selected class= "bold">Seleccioná una acción</option>
-    <option value="1">Esterilización</option>
-    <option value="2">Hidratación de esporas</option>
-    <option value="3">Inoculación</option>
-    <option value="4">Armado de bulk</option>
-    <option value="5">Cosecha</option>
-    <option value="6">Secado y guardado</option>
-    <option value="7">Otra</option>
+    <option value="Esterilización">Esterilización</option>
+    <option value="Hidratación de esporas">Hidratación de esporas</option>
+    <option value="Inoculación">Inoculación</option>
+    <option value="Armado de bulk">Armado de bulk</option>
+    <option value="Cosecha">Cosecha</option>
+    <option value="Secado y guardado">Secado y guardado</option>
+    <option value="Otra">Otra</option>
   </select>
   <label for="floatingSelect">Acciones:</label>
 </div>
-<div id="observacion" class="form-floating mb-3">
-<textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+
+<div class="form-floating mb-3">
+<textarea id="observacion" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
 <label for="floatingTextarea2">Observaciones</label>
 </div>
+
 </div>
   `;
 
@@ -253,12 +259,12 @@ function cargarEntrada() {
     const div = document.createElement("div");
     let contenido = document.getElementById("contenidoEntrada");
 contenido.innerHTML=""
-    div.innerHTML = `<div d-flex><h5 class="mt-3">Entrada</h5></div>
+    div.innerHTML = `<div class= "d-flex mx-3"><h5 class="mt-3">Nueva entrada</h5></div>
   <div>
-  <ul class="list-group list-group-flush">
+  <ul class="list-group list-group-flush mb-3">
   <li class="list-group-item"><strong>Fecha:</strong> ${entrada.fecha}</li>
   <li class="list-group-item"><strong>Acción:</strong> ${entrada.accion}</li>
-  <li class="list-group-item"><strong>Observaciones:</strong> ${entrada.observacion}</li>
+  <li class="list-group-item overflow-auto"><strong>Observaciones:</strong> ${entrada.observacion}</li>
   </ul>
   </div>
   
