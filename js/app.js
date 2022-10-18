@@ -1,19 +1,3 @@
-/*
-// pregunta por prompt la edad, la guarda en el localStorage  
-function conocerEdad() {
-  let edad = localStorage.getItem("edad");
-  if (edad == null) {
-    edad = prompt("Ingrese su edad");
-  }
-  localStorage.setItem("edad", edad);
-  // OPERADOR TERNARIO
-  edad < 18 ? alert("Eres menor de edad, cuentale a un adulto sobre Libro de Setas"): alert("Vamos a crear tu Libro de Cultivo" );
-
-}
-
-conocerEdad();
-*/
-
 //crear usuario
 class Usuario {
   constructor(nombre, mail, location) {
@@ -63,7 +47,7 @@ contenido.innerHTML=""
   });
 
   Toastify({
-    text: "Cargamos tus datos, encuentralos en el menú de opciones",
+    text: "Cargamos tus datos, encontralos en el menú de opciones",
     duration: 3000,
     close: true,
     gravity: "bottom", 
@@ -124,6 +108,7 @@ fetch("./data.json")
       //envia informacion a cart
       cart.push(seta);
       console.log(cart);
+
       //creo modal
       cart.forEach((seta) => {
       
@@ -192,6 +177,7 @@ function agregarEntrada(e) {
 
 let entrada = document.getElementById("nuevaEntrada");
 const div = document.createElement("div");
+
 
 entrada.innerHTML =`<div class="my-4 mx-2">
 
@@ -276,13 +262,13 @@ contenido.innerHTML=""
   });
 
   Toastify({
-    text: "Cargamos tu entrada, encuentrala en el menú de opciones",
-    duration: 3000,
+    text: "Cargamos tu entrada, Gracias por participar!",
+    duration: 4000,
     close: true,
     gravity: "bottom", 
     position: "right",  
     style: {
-    background: "#312954",
+    background: "brown",
     },
     offset: {
       x: 2.5,
@@ -290,10 +276,7 @@ contenido.innerHTML=""
     },
   }).showToast();
 }
-  
 
 
-
-
-// OPERADOR LOGICO AND
+// muestra inicio vacio
 cart.length === 0 && console.log("El libro está vacio");
