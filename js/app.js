@@ -1,3 +1,5 @@
+
+
 //crear usuario
 class Usuario {
   constructor(nombre, mail, location) {
@@ -21,7 +23,6 @@ function cargarUsuario() {
   let location = document.getElementById("location").value;
   let usuario1 = new Usuario(nombre, mail, location);
   arrayCliente.push(usuario1);
-  console.log(usuario1);
   mostrarUsuario(usuario1);
 
 //guarda los datos del usuario en el localStorage
@@ -107,7 +108,10 @@ fetch("./data.json")
     
       //envia informacion a cart
       cart.push(seta);
-      console.log(cart);
+
+      //guarda los datos de la seta elegida en el localStorage
+  localStorage.setItem("seta", JSON.stringify( seta));
+      
 
       //creo modal
       cart.forEach((seta) => {
@@ -145,7 +149,6 @@ function agregarLibro(e) {
 
   //envio informacion 
   cart.push(seta);
-  
 
   //creacion de modal
   cart.forEach((seta) => {
@@ -245,7 +248,7 @@ function cargarEntrada() {
     const div = document.createElement("div");
     let contenido = document.getElementById("contenidoEntrada");
 contenido.innerHTML=""
-    div.innerHTML = `<div class= "d-flex mx-3"><h5 class="mt-3">Nueva entrada</h5></div>
+    div.innerHTML = `<div class= "d-flex mx-3"><h5 class="text-center m-3">Listo!<br> Tomamos nota de tu bitacora para crear en comunidad el Libro de Setas definitivo.<br> Pronto nos contactaremos por mail para contarte mas, hasta luego! ;)</h5></div>
   <div>
   <ul class="list-group list-group-flush mb-3">
   <li class="list-group-item"><strong>Fecha:</strong> ${entrada.fecha}</li>
@@ -277,6 +280,5 @@ contenido.innerHTML=""
   }).showToast();
 }
 
-
 // muestra inicio vacio
-cart.length === 0 && console.log("El libro está vacio");
+cart.length === 0 && localStorage.setItem("libro-nuevo", JSON.stringify(cart));
