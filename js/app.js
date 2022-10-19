@@ -248,7 +248,7 @@ function cargarEntrada() {
     const div = document.createElement("div");
     let contenido = document.getElementById("contenidoEntrada");
 contenido.innerHTML=""
-    div.innerHTML = `<div class= "d-flex mx-3"><h5 class="text-center m-3">Listo!<br> Tomamos nota de tu bitacora para crear en comunidad el Libro de Setas definitivo.<br> Pronto nos contactaremos por mail para contarte mas, hasta luego! ;)</h5></div>
+    div.innerHTML = `<div class= "d-flex mx-3"><h5 class="text-center m-3">Listo!<br> Tomamos nota de tu bitacora para crear en comunidad el Libro de Setas definitivo.<br> Pronto nos contactaremos por mail para contarte mas, hasta luego!</h5></div>
   <div>
   <ul class="list-group list-group-flush mb-3">
   <li class="list-group-item"><strong>Fecha:</strong> ${entrada.fecha}</li>
@@ -265,7 +265,7 @@ contenido.innerHTML=""
   });
 
   Toastify({
-    text: "Cargamos tu entrada, Gracias por participar!",
+    text: "Guardamos tu entrada, Gracias por participar!",
     duration: 4000,
     close: true,
     gravity: "bottom", 
