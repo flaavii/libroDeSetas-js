@@ -20,7 +20,6 @@ Estas instrucciones te permitirán obtener una copia del proyecto en funcionamie
 Descargue o clone el repositorio en su pc. $ git clone **https://github.com/flaavii/libroDeSetas-js.git**
 
 
-> **Nota:** a medida que vaya haciendo cambios la pagina se actualizara sola mientras el comando npm start este en uso (menos si hay algun error). Los errores se pueden ver en la consola o en su navegador.
 
 
 
