@@ -6,7 +6,7 @@ Es un proyecto de recolección de datos de cultivadores de Hongos Psilocibios.
 ## Funciones
 - Creación de usario.
 - Listado de variedades en cards con información del mismo. 
-- Creacion de libro y recolección de notas. 
+- Iniciación de libro y recolección de notas. 
 
 
 ## Utilice:
