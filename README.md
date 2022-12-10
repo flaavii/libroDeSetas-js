@@ -1,4 +1,4 @@
-# Libro de Setas JavaScript
+# Libro de Setas JS
 
 **¿Qué es Libro de Setas?**
 Es un proyecto de recolección de datos de cultivadores de Hongos Psilocibios.
